@@ -1,47 +1,33 @@
-# 🏦 C++ OOP Banking System Simulator
+# 💰 C++ Abstract Banking Simulator
 
-A C++ console application designed to demonstrate fundamental Object-Oriented Programming (OOP) concepts—specifically **Abstraction** and **Encapsulation**—by simulating a basic banking account management system with **CRUD** (Create, Read, Update, Delete) operations.
+A simple C++ console application designed to demonstrate key Object-Oriented Programming (OOP) concepts, primarily **Abstraction**, **Inheritance**, and **Polymorphism**, through the simulation of a basic banking system.
 
-## 🎯 Project Goals
+This project allows the user to interact with two different types of bank accounts: **Savings** and **Current**.
 
-This project serves as an educational tool to showcase:
+## ✨ Features & OOP Concepts
 
-1.  **Encapsulation**: Protecting internal account data (e.g., balance, account number) from direct, unauthorized external access.
-2.  **Abstraction**: Providing a simple, controlled interface (public methods like `deposit()`, `withdraw()`) to hide the complex underlying logic.
-3.  **CRUD Operations**: Implementing the core functions necessary for any data management system:
-    * **C**reate a new account.
-    * **R**ead/View account details and balance.
-    * **U**pdate the account balance (via deposit/withdrawal).
-    * **D**elete/Close an account.
+The project structure is explicitly built to illustrate modern C++ OOP principles:
 
----
-
-## 🛠️ Technology Stack
-
-* **Language**: C++ (C++11 or newer)
-* **Compiler**: GCC/G++ or Clang
-* **Environment**: Console/Terminal application
+* **Abstraction (via Abstract Class)**: The `BankAccount` class is an abstract base class (containing pure virtual functions) that defines a common interface (`deposit`, `withdraw`, `displayBalance`) for all account types, hiding the specific implementation details from the user interface logic.
+* **Inheritance**: The `SavingsAccount` and `CurrentAccount` classes inherit from the `BankAccount` base class, receiving the common logic (like `deposit`) while implementing their own specific behaviors.
+* **Polymorphism (via Virtual Functions)**: The `withdraw` and `displayBalance` methods are virtual, allowing different derived classes (Savings vs. Current) to implement these operations uniquely while being called through a base class pointer or reference (though direct object instantiation is used in `main`).
+* **Encapsulation**: The account `balance` is declared as a `protected` member in the base class, limiting direct manipulation and ensuring all balance changes are handled only through the defined public methods (`deposit` and `withdraw`).
+* **Input Validation**: Includes a templated `getValidInput` function to robustly handle numeric input, preventing crashes from non-numeric entry.
 
 ---
 
-## 🏗️ Program Structure
+## 🏗️ Code Structure Overview
 
-The system is primarily built around the `Account` class, ensuring strong encapsulation and clear abstraction.
+The entire application is contained in a single file, with clearly defined classes:
 
-| File / Class | Role & OOP Principle | Description |
+| Class/Function | Type | Purpose |
 | :--- | :--- | :--- |
-| **`Account.h`** | **Abstraction & Encapsulation** | Declares the `Account` class. Defines private members (data) and public methods (interface) like `deposit()` and `withdraw()`. |
-| **`Account.cpp`** | Implementation | Contains the definition and logic for all `Account` class methods. |
-| **`main.cpp`** | Control Logic | Handles the main application loop, displays the menu, and manages the interaction flow between the user and the `Account` objects. |
-| **`data/`** (or similar) | Persistence | Directory/File used for storing simulated account data (e.g., `accounts.dat`). |
-
-### 🔒 Encapsulation Example
-
-Internal state variables (like `balance` and `accountNumber`) are declared as **private** members within the `Account` class, preventing direct modification. Access is only possible via public, controlled **setter** and **getter** methods.
-
-### 💡 Abstraction Example
-
-The user interacts with a simple `withdraw(amount)` function without needing to know the complex internal checks (e.g., verifying sufficient balance, updating the file record, logging the transaction).
+| **`BankAccount`** | **Abstract Base Class** | Defines the minimum required interface for any bank account (Abstraction). Holds the `balance` (Encapsulation). |
+| **`SavingsAccount`** | Derived Class | Implements a standard savings account. |
+| **`CurrentAccount`** | Derived Class | Implements a standard current/checking account. |
+| **`subMenu()`** | Function | Displays the common menu options for all accounts. |
+| **`getValidInput<T>()`** | Templated Function | Robustly handles and validates user input for numeric data. |
+| **`main()`** | Main Logic | Manages the primary application flow, account initialization, and user interactions. |
 
 ---
 
@@ -49,8 +35,22 @@ The user interacts with a simple `withdraw(amount)` function without needing to 
 
 ### Prerequisites
 
-You need a C++ compiler installed on your system (GCC/G++ recommended).
+You need a C++ compiler installed on your system that supports at least C++11 (GCC/G++ or Clang recommended).
+
+### Compilation
+
+1.  Save the code provided into a single file named, for example, `banking_app.cpp`.
+2.  Open your terminal or command prompt.
+3.  Navigate to the directory where you saved the file.
+4.  Compile the code using your C++ compiler:
+
+    ```bash
+    g++ banking_app.cpp -o banking_app
+    ```
+
+### Running the Application
+
+Execute the compiled program from the terminal:
 
 ```bash
-# Check if g++ is installed
-g++ --version
+./banking_app
