@@ -1,99 +1,56 @@
-# 🚀 Project QOL Frontend
+# 🏦 C++ OOP Banking System Simulator
 
-The frontend application for **Project QOL** (Quality of Life), a software development initiative aimed at enhancing the developer experience and overall quality of life for our team.
+A C++ console application designed to demonstrate fundamental Object-Oriented Programming (OOP) concepts—specifically **Abstraction** and **Encapsulation**—by simulating a basic banking account management system with **CRUD** (Create, Read, Update, Delete) operations.
 
-This project is a modern web application built with **Next.js** and bootstrapped using `create-next-app`.
+## 🎯 Project Goals
 
-## ✨ Key Features
+This project serves as an educational tool to showcase:
 
-* **Modern Stack**: Built with Next.js (React) and TypeScript for a robust and scalable application.
-* **Optimized Performance**: Leverages Next.js features like automatic code splitting and Vercel's optimized font loading (Geist).
-* **Intuitive Routing**: Uses the modern Next.js **App Router** for clear and organized page structure and routing logic.
-* **Reusable Components**: Standardized UI components for rapid development and consistency.
-
----
-
-## 🏗️ Project Structure
-
-The repository is organized to maintain clarity and separation of concerns, following standard Next.js conventions.
-
-| Directory | Purpose |
-| :--- | :--- |
-| **`app/`** | Contains the **routing logic** for the application (the App Router). This is where you define your pages, layouts, and their respective routes. |
-| **`components/`** | Houses **reusable UI components** (e.g., buttons, cards, navigation) that are used throughout the application. |
-| **`hooks/`** | Stores **custom React Hooks** for encapsulating stateful logic and making it reusable across different components. |
-| **`libs/`** | Intended for **utility functions**, helper libraries, constant data, and non-React specific logic. |
-| **`public/`** | For static assets like images, fonts, and other files that need to be served directly. |
+1.  **Encapsulation**: Protecting internal account data (e.g., balance, account number) from direct, unauthorized external access.
+2.  **Abstraction**: Providing a simple, controlled interface (public methods like `deposit()`, `withdraw()`) to hide the complex underlying logic.
+3.  **CRUD Operations**: Implementing the core functions necessary for any data management system:
+    * **C**reate a new account.
+    * **R**ead/View account details and balance.
+    * **U**pdate the account balance (via deposit/withdrawal).
+    * **D**elete/Close an account.
 
 ---
 
-## 🛠️ Getting Started
+## 🛠️ Technology Stack
 
-Follow these steps to set up the project locally for development.
+* **Language**: C++ (C++11 or newer)
+* **Compiler**: GCC/G++ or Clang
+* **Environment**: Console/Terminal application
+
+---
+
+## 🏗️ Program Structure
+
+The system is primarily built around the `Account` class, ensuring strong encapsulation and clear abstraction.
+
+| File / Class | Role & OOP Principle | Description |
+| :--- | :--- | :--- |
+| **`Account.h`** | **Abstraction & Encapsulation** | Declares the `Account` class. Defines private members (data) and public methods (interface) like `deposit()` and `withdraw()`. |
+| **`Account.cpp`** | Implementation | Contains the definition and logic for all `Account` class methods. |
+| **`main.cpp`** | Control Logic | Handles the main application loop, displays the menu, and manages the interaction flow between the user and the `Account` objects. |
+| **`data/`** (or similar) | Persistence | Directory/File used for storing simulated account data (e.g., `accounts.dat`). |
+
+### 🔒 Encapsulation Example
+
+Internal state variables (like `balance` and `accountNumber`) are declared as **private** members within the `Account` class, preventing direct modification. Access is only possible via public, controlled **setter** and **getter** methods.
+
+### 💡 Abstraction Example
+
+The user interacts with a simple `withdraw(amount)` function without needing to know the complex internal checks (e.g., verifying sufficient balance, updating the file record, logging the transaction).
+
+---
+
+## ⚙️ Getting Started
 
 ### Prerequisites
 
-* Node.js (LTS recommended)
-* A package manager (npm, yarn, pnpm, or bun)
-
-### Installation
-
-1.  **Clone the Repository:**
-
-    ```bash
-    git clone [YOUR_REPO_URL_HERE]
-    cd project-qol-frontend
-    ```
-
-2.  **Install Dependencies:**
-
-    Choose your preferred package manager:
-
-    ```bash
-    # Using npm
-    npm install
-    
-    # or using yarn
-    # yarn install
-    
-    # or using pnpm
-    # pnpm install
-    ```
-
-### Running the Development Server
-
-Start the development server with hot-reloading:
+You need a C++ compiler installed on your system (GCC/G++ recommended).
 
 ```bash
-# Using npm
-npm run dev
-
-# or using yarn
-# yarn dev
-
-# or using pnpm
-# pnpm dev
-
-# or using bun
-# bun dev
-```
-
-Open your browser and navigate to http://localhost:3000 to see the result.
-
-Tip: Start editing the main page by modifying app/page.tsx. The page will auto-update as you make changes.
-
-📚 Learn More
-To learn more about Next.js features and concepts, check out the following resources:
-
-Next.js Documentation - Learn about Next.js features and API.
-
-Learn Next.js - An interactive Next.js tutorial.
-
-This project uses next/font to automatically optimize and load the Geist font family from Vercel.
-
-🚢 Deployment
-The easiest and most efficient way to deploy your Next.js app is to use the Vercel Platform, developed by the creators of Next.js.
-
-Simply push your code to GitHub, and link your repository to a new Vercel project. Vercel handles the build process, optimization, and global delivery automatically.
-
-For detailed instructions, refer to the Next.js Deployment Documentation.
+# Check if g++ is installed
+g++ --version
